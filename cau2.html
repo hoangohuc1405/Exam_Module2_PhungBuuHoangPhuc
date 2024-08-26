@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function roundScore(diem) {
+        if (diem < 48) {
+            return diem;
+        }
+
+        let boiSotiepTheo5 = Math.ceil(diem / 5) * 5;
+
+        if (boiSotiepTheo5 - diem < 3) {
+            return boiSotiepTheo5;
+        }
+        return diem;
+    }
+
+    let nhapDiem = prompt("Nhập điểm số của học sinh (từ 0 đến 100):");
+
+    let diem = parseInt(nhapDiem, 10);
+
+    if (isNaN(diem) || diem < 0 || diem > 100) {
+        document.write("Điểm số không hợp lệ. Vui lòng nhập một số từ 0 đến 100.");
+    } else {
+
+        let lamTrondiem = roundScore(diem);
+        document.write(`Điểm số sau khi làm tròn: ${lamTrondiem}`);
+    }
+</script>
+
+</html>

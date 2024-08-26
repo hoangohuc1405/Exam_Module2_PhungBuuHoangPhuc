@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mảng số nguyên</title>
+    <body>
+        <h1>Quản lý Mảng Số Nguyên</h1>
+        <button onclick="addNumber()">Thêm số vào mảng</button>
+        <p id="arrayDisplay">Mảng: []</p>
+        <p id="numbersDisplay">Các số là bội chung của 3 và 5: []</p>
+        <p id="sumDisplay">Tổng của các số là bội chung của 3 và 5: 0</p>
+    </body>
+    <script>
+        let numbers = [];
+
+        function addNumber() {
+            if (numbers.length >= 20) {
+                alert("Mảng đã đầy (tối đa 20 phần tử).");
+                return;
+            }
+            let input = prompt("Nhập số nguyên để thêm vào mảng:");
+            let num = parseInt(input);
+
+            if (isNaN(num)) {
+                alert("Vui lòng nhập một số nguyên hợp lệ.");
+                return;
+            }
+
+            numbers.push(num);
+            displayArray();
+            displayFilteredNumbers();
+        }
+
+        function displayArray() {
+            let arrayDisplay = document.getElementById("arrayDisplay");
+            arrayDisplay.textContent = "Mảng: [" + numbers.join(", ") + "]";
+        }
+
+        function displayFilteredNumbers() {
+            let filteredNumbers = [];
+            let sum = 0;
+            
+            for (let i = 0; i < numbers.length; i++) {
+                let num = numbers[i];
+                if (num % 3 === 0 && num % 5 === 0) {
+                    filteredNumbers.push(num);
+                    sum += num;
+                }
+            }
+            
+            let numbersDisplay = document.getElementById("numbersDisplay");
+            let sumDisplay = document.getElementById("sumDisplay");
+            
+            if (filteredNumbers.length > 0) {
+                numbersDisplay.textContent = "Các số là bội chung của 3 và 5: [" + filteredNumbers.join(", ") + "]";
+            } else {
+                numbersDisplay.textContent = "Không có số nào là bội chung của 3 và 5.";
+            }
+            
+            sumDisplay.textContent = "Tổng của các số là bội chung của 3 và 5: " + sum;
+        }
+    </script>
+</head>
+</html>
